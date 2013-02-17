@@ -15,7 +15,7 @@ import android.util.Log;
 public class NotesDbAdapter
 {
     public static final String KEY_NAME = "name";
-    public static final String KEY_NUM = "number";
+    public static final String KEY_NUMBER = "number";
     public static final String KEY_NOTES = "notes";
     public static final String KEY_ROWID = "_id";
 
@@ -26,9 +26,9 @@ public class NotesDbAdapter
     private static final String DATABASE_NAME = "data";
     private static final String DATABASE_TABLE = "notes";
     private static final int DATABASE_VERSION = 2;
-    private static final String DATABASE_CREATE = "create " + DATABASE_NAME + " " + DATABASE_TABLE + " (" + KEY_ROWID
-            + " integer primary key " + "autoincrement, " + KEY_NAME + " " + KEY_NUM + " " + KEY_NOTES
-            + " not null, body text not null);";
+    private static final String DATABASE_CREATE = "create table " + DATABASE_TABLE + " (" + KEY_ROWID
+            + " integer primary key autoincrement, " + KEY_NAME + " not null, " + KEY_NUMBER + " text not null, "
+            + KEY_NOTES + " text not null);";
 
     private final Context mCtx;
 
@@ -88,16 +88,16 @@ public class NotesDbAdapter
      * Create a new note using the team name, number, and notes provided. If the note is successfully created, then
      * return the new rowId for that note, otherwise return -1 to indicate failure.
      *
-     * @param num The name of the team.
-     * @param num The team's number.
+     * @param name The name of the team.
+     * @param number The team's number.
      * @param notes The notes of the team.
      * @return rowId or -1 if failed.
      */
-    public long createNote(String name, String num, String notes)
+    public long createNote(String name, String number, String notes)
     {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_NAME, name);
-        initialValues.put(KEY_NUM, num);
+        initialValues.put(KEY_NUMBER, number);
         initialValues.put(KEY_NOTES, notes);
 
         return mDb.insert(DATABASE_TABLE, null, initialValues);
@@ -121,7 +121,7 @@ public class NotesDbAdapter
      */
     public Cursor fetchAllNotes()
     {
-        return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_NAME, KEY_NUM, KEY_NOTES}, null, null, null, null,
+        return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_NAME, KEY_NUMBER, KEY_NOTES}, null, null, null, null,
                 null);
     }
 
@@ -135,8 +135,8 @@ public class NotesDbAdapter
     public Cursor fetchNote(long rowId) throws SQLException
     {
         Cursor mCursor =
-                mDb.query(true, DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NAME, KEY_NOTES}, KEY_ROWID + "=" + rowId,
-                        null, null, null, null, null);
+                mDb.query(true, DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NAME, KEY_NUMBER, KEY_NOTES}, KEY_ROWID +
+                        "=" + rowId, null, null, null, null, null);
         if (mCursor != null)
         {
             mCursor.moveToFirst();
@@ -151,15 +151,15 @@ public class NotesDbAdapter
      *
      * @param rowId Id of note to update.
      * @param name  Value to set team name to.
-     * @param num   Value to set team number to.
+     * @param number   Value to set team number to.
      * @param notes Values to set team notes to.
      * @return True if the note was successfully updated, false otherwise.
      */
-    public boolean updateNote(long rowId, String name, String num, String notes)
+    public boolean updateNote(long rowId, String name, String number, String notes)
     {
         ContentValues args = new ContentValues();
         args.put(KEY_NAME, name);
-        args.put(KEY_NUM, num);
+        args.put(KEY_NUMBER, number);
         args.put(KEY_NOTES, notes);
 
         return mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;

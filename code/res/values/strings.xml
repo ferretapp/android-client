@@ -2,4 +2,11 @@
 <resources>
     <string name="app_name">FRC Scout</string>
     <string name="no_notes">No Notes Yet</string>
+    <string name="menu_insert">Add Team</string>
+    <string name="menu_delete">Delete Team</string>
+    <string name="name">Team Name</string>
+    <string name="number">Team Number</string>
+    <string name="notes">Notes</string>
+    <string name="confirm">Confirm</string>
+    <string name="edit_note">Edit Note</string>
 </resources>
