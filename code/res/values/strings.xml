@@ -8,5 +8,5 @@
     <string name="number">Team Number</string>
     <string name="notes">Notes</string>
     <string name="confirm">Confirm</string>
-    <string name="edit_note">Edit Note</string>
+    <string name="edit_note">Edit Team</string>
 </resources>
