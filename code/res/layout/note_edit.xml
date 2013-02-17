@@ -8,7 +8,8 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:orientation="vertical"
                   android:layout_width="match_parent"
-                  android:layout_height="match_parent">
+                  android:layout_height="match_parent"
+                  android:paddingLeft="10dp">
 
         <LinearLayout android:orientation="horizontal"
                       android:layout_width="match_parent"
@@ -40,7 +41,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/gameplay"
-                android:layout_gravity="left|center_vertical"/>
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginTop="15dp"/>
         <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,9 +60,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/gameplay_defense"
                 android:id="@+id/gameplay_defense" android:layout_gravity="left|center_vertical"/>
+
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:text="@string/notes" />
+                  android:text="@string/notes"
+                  android:layout_marginTop="15dp"/>
         <EditText android:id="@+id/notes"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"

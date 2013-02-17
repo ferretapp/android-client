@@ -1,8 +1,10 @@
 package com.zachlatta.frc_scout;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -23,6 +25,8 @@ public class NoteEdit extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        getActionBar().setHomeButtonEnabled(true);
+
         mDbHelper = new NotesDbAdapter(this);
         mDbHelper.open();
 
@@ -76,6 +80,13 @@ public class NoteEdit extends Activity
                     note.getInt(note.getColumnIndexOrThrow(NotesDbAdapter.KEY_GAMEPLAY_DEFENSE)) > 0 ? true : false);
             mNotesText.setText(note.getString(note.getColumnIndexOrThrow(NotesDbAdapter.KEY_NOTES)));
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem)
+    {
+        startActivity(new Intent(NoteEdit.this, MainActivity.class));
+        return true;
     }
 
     @Override
