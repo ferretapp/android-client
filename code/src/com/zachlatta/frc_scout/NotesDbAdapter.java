@@ -16,6 +16,9 @@ public class NotesDbAdapter
 {
     public static final String KEY_NAME = "name";
     public static final String KEY_NUMBER = "number";
+    public static final String KEY_GAMEPLAY_SHOOTING = "gameplay_shooting";
+    public static final String KEY_GAMEPLAY_CLIMBING = "gameplay_climbing";
+    public static final String KEY_GAMEPLAY_DEFENSE = "gameplay_defense";
     public static final String KEY_NOTES = "notes";
     public static final String KEY_ROWID = "_id";
 
@@ -28,7 +31,8 @@ public class NotesDbAdapter
     private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_CREATE = "create table " + DATABASE_TABLE + " (" + KEY_ROWID
             + " integer primary key autoincrement, " + KEY_NAME + " not null, " + KEY_NUMBER + " text not null, "
-            + KEY_NOTES + " text not null);";
+            + KEY_NOTES + " text not null, " + KEY_GAMEPLAY_SHOOTING + " integer not null, " + KEY_GAMEPLAY_CLIMBING
+            + " integer not null, " + KEY_GAMEPLAY_DEFENSE + " integer not null);";
 
     private final Context mCtx;
 
@@ -93,11 +97,15 @@ public class NotesDbAdapter
      * @param notes The notes of the team.
      * @return rowId or -1 if failed.
      */
-    public long createNote(String name, String number, String notes)
+    public long createNote(String name, String number, boolean gameplayShooting, boolean gameplayClimbing,
+                           boolean gameplayDefense, String notes)
     {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_NAME, name);
         initialValues.put(KEY_NUMBER, number);
+        initialValues.put(KEY_GAMEPLAY_SHOOTING, gameplayShooting);
+        initialValues.put(KEY_GAMEPLAY_CLIMBING, gameplayClimbing);
+        initialValues.put(KEY_GAMEPLAY_DEFENSE, gameplayDefense);
         initialValues.put(KEY_NOTES, notes);
 
         return mDb.insert(DATABASE_TABLE, null, initialValues);
@@ -121,8 +129,8 @@ public class NotesDbAdapter
      */
     public Cursor fetchAllNotes()
     {
-        return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_NAME, KEY_NUMBER, KEY_NOTES}, null, null, null, null,
-                null);
+        return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_NAME, KEY_NUMBER, KEY_GAMEPLAY_SHOOTING,
+                KEY_GAMEPLAY_CLIMBING, KEY_GAMEPLAY_DEFENSE, KEY_NOTES}, null, null, null, null, null);
     }
 
     /**
@@ -134,9 +142,10 @@ public class NotesDbAdapter
      */
     public Cursor fetchNote(long rowId) throws SQLException
     {
-        Cursor mCursor =
-                mDb.query(true, DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NAME, KEY_NUMBER, KEY_NOTES}, KEY_ROWID +
-                        "=" + rowId, null, null, null, null, null);
+        Cursor mCursor = mDb.query(true, DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NAME, KEY_NUMBER,
+                KEY_GAMEPLAY_SHOOTING, KEY_GAMEPLAY_CLIMBING, KEY_GAMEPLAY_DEFENSE, KEY_NOTES}, KEY_ROWID + "=" + rowId,
+                null, null, null, null, null);
+
         if (mCursor != null)
         {
             mCursor.moveToFirst();
@@ -152,14 +161,21 @@ public class NotesDbAdapter
      * @param rowId Id of note to update.
      * @param name  Value to set team name to.
      * @param number   Value to set team number to.
+     * @param gameplayShooting Value to set gameplay_shooting to.
+     * @param gameplayClimbing Value to set gameplay_climbing to.
+     * @param gameplayDefense Value to set gameplay_defense to.
      * @param notes Values to set team notes to.
      * @return True if the note was successfully updated, false otherwise.
      */
-    public boolean updateNote(long rowId, String name, String number, String notes)
+    public boolean updateNote(long rowId, String name, String number, boolean gameplayShooting,
+                              boolean gameplayClimbing, boolean gameplayDefense, String notes)
     {
         ContentValues args = new ContentValues();
         args.put(KEY_NAME, name);
         args.put(KEY_NUMBER, number);
+        args.put(KEY_GAMEPLAY_SHOOTING, gameplayShooting);
+        args.put(KEY_GAMEPLAY_CLIMBING, gameplayClimbing);
+        args.put(KEY_GAMEPLAY_DEFENSE, gameplayDefense);
         args.put(KEY_NOTES, notes);
 
         return mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;

@@ -1,49 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content">
 
-    <LinearLayout android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="@string/name" />
-        <EditText android:id="@+id/name"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_weight="1" />
-    </LinearLayout>
-
-    <LinearLayout android:orientation="horizontal"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
                   android:layout_width="match_parent"
-                  android:layout_height="wrap_content">
+                  android:layout_height="match_parent">
 
+        <LinearLayout android:orientation="horizontal"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content">
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@string/name" />
+            <EditText android:id="@+id/name"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout android:orientation="horizontal"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content">
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@string/number" />
+            <EditText android:id="@+id/number"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1" />
+        </LinearLayout>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gameplay"
+                android:layout_gravity="left|center_vertical"/>
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gameplay_shooting"
+                android:id="@+id/gameplay_shooting" android:layout_gravity="left|center_vertical"
+                android:singleLine="false" android:checked="false"/>
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gameplay_climbing"
+                android:id="@+id/gameplay_climbing" android:layout_gravity="left|center_vertical"
+                android:checked="false"/>
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gameplay_defense"
+                android:id="@+id/gameplay_defense" android:layout_gravity="left|center_vertical"/>
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:text="@string/number" />
-        <EditText android:id="@+id/number"
-                  android:layout_width="wrap_content"
+                  android:text="@string/notes" />
+        <EditText android:id="@+id/notes"
+                  android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:layout_weight="1" />
+                  android:layout_weight="1"
+                  android:scrollbars="vertical" />
+
+        <Button android:id="@+id/confirm"
+                android:text="@string/confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scrollbars="vertical" />
     </LinearLayout>
-
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="@string/notes" />
-    <EditText android:id="@+id/notes"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_weight="1"
-              android:scrollbars="vertical" />
-
-    <Button android:id="@+id/confirm"
-            android:text="@string/confirm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:scrollbars="vertical" />
-</LinearLayout>
+</ScrollView>

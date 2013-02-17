@@ -6,6 +6,10 @@
     <string name="menu_delete">Delete Team</string>
     <string name="name">Team Name</string>
     <string name="number">Team Number</string>
+    <string name="gameplay">Gameplay</string>
+    <string name="gameplay_shooting">Shooting</string>
+    <string name="gameplay_climbing">Climbing</string>
+    <string name="gameplay_defense">Defense</string>
     <string name="notes">Notes</string>
     <string name="confirm">Confirm</string>
     <string name="edit_note">Edit Team</string>
