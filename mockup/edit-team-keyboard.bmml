@@ -1,0 +1,89 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="360" measuredH="515" mockupW="360" mockupH="515">
+  <controls>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Canvas" x="0" y="0" w="360" h="515" measuredW="100" measuredH="70" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="__group__" x="0" y="0" w="360" h="48" measuredW="360" measuredH="48" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <controlName>ga-action-bar-split1</controlName>
+      </controlProperties>
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::Canvas" x="0" y="0" w="360" h="48" measuredW="100" measuredH="70" zOrder="0" locked="false" isInGroup="12">
+          <controlProperties>
+            <borderStyle>none</borderStyle>
+            <color>14540253</color>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::Icon" x="7" y="16" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="1" locked="false" isInGroup="12">
+          <controlProperties>
+            <color>0</color>
+            <icon>GtIcon%7Cxsmall</icon>
+            <rotation>180</rotation>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::Title" x="38" y="9" w="-1" h="-1" measuredW="129" measuredH="31" zOrder="2" locked="false" isInGroup="12">
+          <controlProperties>
+            <size>28</size>
+            <text>Edit%20Team</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::Icon" x="306" y="8" w="-1" h="-1" measuredW="32" measuredH="32" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+        <icon>CameraIcon%7Cmedium</icon>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::Component" x="0" y="245" w="360" h="222" measuredW="360" measuredH="222" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/android.bmml#ga-keyboard-portrait-360</src>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Component" x="0" y="467" w="360" h="48" measuredW="360" measuredH="48" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <override controlID="1">
+          <color>3355443</color>
+        </override>
+        <override controlID="2">
+          <icon>HomeMobileIcon%7Csmall</icon>
+          <text/>
+        </override>
+        <src>./assets/android.bmml#ga-navbar-portrait-dismiss</src>
+      </controlProperties>
+    </control>
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::Label" x="21" y="55" w="-1" h="-1" measuredW="38" measuredH="21" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Name%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::TextInput" x="21" y="76" w="317" h="-1" measuredW="92" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>focused</state>
+        <text>P.O.T.A.T.O.E.S.</text>
+      </controlProperties>
+    </control>
+    <control controlID="24" controlTypeID="com.balsamiq.mockups::Label" x="21" y="117" w="-1" h="-1" measuredW="49" measuredH="21" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Number%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="25" controlTypeID="com.balsamiq.mockups::TextInput" x="21" y="138" w="317" h="-1" measuredW="42" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>1759</text>
+      </controlProperties>
+    </control>
+    <control controlID="26" controlTypeID="com.balsamiq.mockups::Label" x="21" y="179" w="-1" h="-1" measuredW="38" measuredH="21" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Notes%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="27" controlTypeID="com.balsamiq.mockups::TextArea" x="21" y="200" w="317" h="267" measuredW="200" measuredH="140" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Signficantly%20more%20attractive%20than%20similar%20teams.</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
