@@ -59,7 +59,7 @@ public class FrcScout extends ListActivity
 
             case FEATURE_REQUEST_ID:
                 sendEmail(
-                        new String[] {"zchlatta@gmail.com"},
+                        new String[]{"zchlatta@gmail.com" },
                         "Feature Request - FRC Scout",
                         "Brief summary:\n\n\n" +
                                 "Extended description (optional): \n");
@@ -129,7 +129,7 @@ public class FrcScout extends ListActivity
         String[] from = new String[]{NotesDbAdapter.KEY_NAME};
 
         // Array of the fields to bind fields displayed in the list to.
-        int[] to = new int[] {R.id.text1};
+        int[] to = new int[]{R.id.text1};
 
         SimpleCursorAdapter notes = new SimpleCursorAdapter(this, R.layout.notes_row, notesCursor, from, to);
         setListAdapter(notes);

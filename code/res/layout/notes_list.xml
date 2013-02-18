@@ -11,7 +11,8 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:text="@string/no_notes" android:textColor="#8d8d8d"
-              android:textSize="24sp" android:textIsSelectable="false" android:gravity="center_vertical|center_horizontal"
+              android:textSize="24sp" android:textIsSelectable="false"
+              android:gravity="center_vertical|center_horizontal"
               android:textStyle="bold" android:width="156dp" android:layout_margin="25dp"/>
 
 </LinearLayout>
