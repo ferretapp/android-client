@@ -85,7 +85,7 @@ public class NoteEdit extends Activity
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem)
     {
-        startActivity(new Intent(NoteEdit.this, MainActivity.class));
+        startActivity(new Intent(NoteEdit.this, FrcScout.class));
         return true;
     }
 

@@ -14,7 +14,7 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
-public class MainActivity extends ListActivity
+public class FrcScout extends ListActivity
 {
     private static final int ACTIVITY_CREATE = 0;
     private static final int ACTIVITY_EDIT = 1;
@@ -155,7 +155,7 @@ public class MainActivity extends ListActivity
         }
         catch (ActivityNotFoundException e)
         {
-            Toast.makeText(MainActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(FrcScout.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
         }
     }
 }
