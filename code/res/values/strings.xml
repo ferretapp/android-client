@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">FRC Scout</string>
-    <string name="no_notes">No Notes Yet</string>
+    <string name="no_notes">Whoops, it looks like you haven\'t added any teams yet.</string>
     <string name="menu_insert">Add Team</string>
     <string name="menu_feature_request">Feature Request</string>
     <string name="menu_delete">Delete Team</string>
