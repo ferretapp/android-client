@@ -53,7 +53,7 @@ public class NotesDbAdapter
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
         {
             Log.w(TAG, "Upgrading database from version " + oldVersion + " to " + newVersion + ", which will destroy "
-                    + "all old data.") ;
+                    + "all old data.");
             db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
             onCreate(db);
         }
@@ -92,9 +92,9 @@ public class NotesDbAdapter
      * Create a new note using the team name, number, and notes provided. If the note is successfully created, then
      * return the new rowId for that note, otherwise return -1 to indicate failure.
      *
-     * @param name The name of the team.
+     * @param name   The name of the team.
      * @param number The team's number.
-     * @param notes The notes of the team.
+     * @param notes  The notes of the team.
      * @return rowId or -1 if failed.
      */
     public long createNote(String name, String number, boolean gameplayShooting, boolean gameplayClimbing,
@@ -129,7 +129,7 @@ public class NotesDbAdapter
      */
     public Cursor fetchAllNotes()
     {
-        return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_NAME, KEY_NUMBER, KEY_GAMEPLAY_SHOOTING,
+        return mDb.query(DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NAME, KEY_NUMBER, KEY_GAMEPLAY_SHOOTING,
                 KEY_GAMEPLAY_CLIMBING, KEY_GAMEPLAY_DEFENSE, KEY_NOTES}, null, null, null, null, null);
     }
 
@@ -158,13 +158,13 @@ public class NotesDbAdapter
      * Update the note using the details provided. The note to be updated is specified using the rowId, and is altered
      * to use the title and body values passed in.
      *
-     * @param rowId Id of note to update.
-     * @param name  Value to set team name to.
-     * @param number   Value to set team number to.
+     * @param rowId            Id of note to update.
+     * @param name             Value to set team name to.
+     * @param number           Value to set team number to.
      * @param gameplayShooting Value to set gameplay_shooting to.
      * @param gameplayClimbing Value to set gameplay_climbing to.
-     * @param gameplayDefense Value to set gameplay_defense to.
-     * @param notes Values to set team notes to.
+     * @param gameplayDefense  Value to set gameplay_defense to.
+     * @param notes            Values to set team notes to.
      * @return True if the note was successfully updated, false otherwise.
      */
     public boolean updateNote(long rowId, String name, String number, boolean gameplayShooting,

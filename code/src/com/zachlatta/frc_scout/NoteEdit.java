@@ -45,7 +45,7 @@ public class NoteEdit extends Activity
         mRowId = (savedInstanceState == null) ? null :
                 (Long) savedInstanceState.getSerializable(NotesDbAdapter.KEY_ROWID);
 
-        if(mRowId == null)
+        if (mRowId == null)
         {
             Bundle extras = getIntent().getExtras();
             mRowId = extras != null ? extras.getLong(NotesDbAdapter.KEY_ROWID) : null;

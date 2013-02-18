@@ -1,6 +1,5 @@
 package com.zachlatta.frc_scout;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -48,7 +47,7 @@ public class MainActivity extends ListActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        switch(item.getItemId())
+        switch (item.getItemId())
         {
             case INSERT_ID:
                 createNote();
@@ -68,7 +67,7 @@ public class MainActivity extends ListActivity
     @Override
     public boolean onContextItemSelected(MenuItem item)
     {
-        switch(item.getItemId())
+        switch (item.getItemId())
         {
             case DELETE_ID:
                 AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
@@ -83,7 +82,7 @@ public class MainActivity extends ListActivity
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item)
     {
-        switch(item.getItemId())
+        switch (item.getItemId())
         {
             case INSERT_ID:
                 createNote();
@@ -115,10 +114,10 @@ public class MainActivity extends ListActivity
         startManagingCursor(notesCursor);
 
         // Create array to specify fields to display in the list
-        String[] from = new String[] {NotesDbAdapter.KEY_NAME};
+        String[] from = new String[]{NotesDbAdapter.KEY_NAME};
 
         // Array of the fields to bind fields displayed in the list to.
-        int[] to = new int[] {R.id.text1};
+        int[] to = new int[]{R.id.text1};
 
         SimpleCursorAdapter notes = new SimpleCursorAdapter(this, R.layout.notes_row, notesCursor, from, to);
         setListAdapter(notes);
