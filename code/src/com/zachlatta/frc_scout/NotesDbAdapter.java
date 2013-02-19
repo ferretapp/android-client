@@ -54,7 +54,7 @@ public class NotesDbAdapter
         @Override
         public void onCreate(SQLiteDatabase db)
         {
-            db.execSQL("create table " + DATABASE_CREATE);
+            db.execSQL(DATABASE_CREATE);
         }
 
         @Override
@@ -165,9 +165,9 @@ public class NotesDbAdapter
      * Create a new note using the team name, number, and notes provided. If the note is successfully created, then
      * return the new rowId for that note, otherwise return -1 to indicate failure.
      *
-     * @param name The name of the team.
+     * @param name   The name of the team.
      * @param number The team's number.
-     * @param notes The notes of the team.
+     * @param notes  The notes of the team.
      * @return rowId or -1 if failed.
      */
     public long createNote(String name, String number, boolean gameplayShooting, boolean gameplayClimbing,
@@ -231,13 +231,13 @@ public class NotesDbAdapter
      * Update the note using the details provided. The note to be updated is specified using the rowId, and is altered
      * to use the title and body values passed in.
      *
-     * @param rowId Id of note to update.
-     * @param name  Value to set team name to.
-     * @param number   Value to set team number to.
+     * @param rowId            Id of note to update.
+     * @param name             Value to set team name to.
+     * @param number           Value to set team number to.
      * @param gameplayShooting Value to set gameplay_shooting to.
      * @param gameplayClimbing Value to set gameplay_climbing to.
-     * @param gameplayDefense Value to set gameplay_defense to.
-     * @param notes Values to set team notes to.
+     * @param gameplayDefense  Value to set gameplay_defense to.
+     * @param notes            Values to set team notes to.
      * @return True if the note was successfully updated, false otherwise.
      */
     public boolean updateNote(long rowId, String name, String number, boolean gameplayShooting,

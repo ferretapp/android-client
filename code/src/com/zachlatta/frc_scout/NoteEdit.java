@@ -45,7 +45,7 @@ public class NoteEdit extends Activity
         mRowId = (savedInstanceState == null) ? null :
                 (Long) savedInstanceState.getSerializable(NotesDbAdapter.KEY_ROWID);
 
-        if(mRowId == null)
+        if (mRowId == null)
         {
             Bundle extras = getIntent().getExtras();
             mRowId = extras != null ? extras.getLong(NotesDbAdapter.KEY_ROWID) : null;
@@ -85,7 +85,7 @@ public class NoteEdit extends Activity
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem)
     {
-        startActivity(new Intent(NoteEdit.this, MainActivity.class));
+        startActivity(new Intent(NoteEdit.this, FrcScout.class));
         return true;
     }
 
