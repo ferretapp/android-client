@@ -40,7 +40,9 @@ public class NotesDbAdapter
             + KEY_NOTES + " text not null, "
             + KEY_GAMEPLAY_SHOOTING + " integer not null, "
             + KEY_GAMEPLAY_CLIMBING + " integer not null, "
-            + KEY_GAMEPLAY_DEFENSE + " integer not null);";
+            + KEY_GAMEPLAY_DEFENSE + " integer not null, "
+            + "deletion, "
+            + "priority);";
 
     private final Context mCtx;
 
@@ -60,21 +62,21 @@ public class NotesDbAdapter
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
         {
-            Log.w(TAG, "Upgrading database from version " + oldVersion + " to " + newVersion + ", which will destroy "
-                    + "all old data.") ;
+            Log.w(TAG, "Upgrading database from version " + oldVersion + " to " + newVersion);
+
+            db.beginTransaction();
 
             try
             {
-                db.execSQL("create table if not exists " + DATABASE_CREATE);
-
+                db.execSQL("CREATE TABLE IF NOT EXISTS " + DATABASE_CREATE);
                 List<String> columns = GetColumns(db, DATABASE_TABLE);
-                db.execSQL("alter table " + DATABASE_TABLE + " rename to 'temp_" + DATABASE_TABLE + "'");
+                db.execSQL("ALTER table " + DATABASE_TABLE + " RENAME TO 'temp_" + DATABASE_TABLE + "'");
                 db.execSQL("create table " + DATABASE_CREATE);
                 columns.retainAll(GetColumns(db, DATABASE_TABLE));
                 String cols = join(columns, ",");
-                db.execSQL(String.format("insert into %s (%s) select %s from temp_%s", DATABASE_TABLE, cols, cols,
+                db.execSQL(String.format( "INSERT INTO %s (%s) SELECT %s from temp_%s", DATABASE_TABLE, cols, cols,
                         DATABASE_TABLE));
-                db.execSQL("drop table 'temp_" + DATABASE_TABLE + "'");
+                db.execSQL("DROP table 'temp_" + DATABASE_TABLE + "'");
                 db.setTransactionSuccessful();
             }
             finally
@@ -87,24 +89,23 @@ public class NotesDbAdapter
         {
             List<String> ar = null;
             Cursor c = null;
-
             try
             {
                 c = db.rawQuery("select * from " + tableName + " limit 1", null);
 
-                if(c != null)
+                if (c != null)
                 {
                     ar = new ArrayList<String>(Arrays.asList(c.getColumnNames()));
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Log.v(tableName, e.getMessage(), e);
                 e.printStackTrace();
             }
             finally
             {
-                if(c != null)
+                if (c != null)
                 {
                     c.close();
                 }
@@ -118,9 +119,9 @@ public class NotesDbAdapter
             StringBuilder buf = new StringBuilder();
             int num = list.size();
 
-            for(int i = 0; i < num; i++)
+            for (int i = 0; i < num; i++)
             {
-                if(i != 0)
+                if (i != 0)
                 {
                     buf.append(delim);
                 }
