@@ -54,7 +54,7 @@ public class NotesDbAdapter
         @Override
         public void onCreate(SQLiteDatabase db)
         {
-            db.execSQL(DATABASE_CREATE);
+            db.execSQL("create table " + DATABASE_CREATE);
         }
 
         @Override
