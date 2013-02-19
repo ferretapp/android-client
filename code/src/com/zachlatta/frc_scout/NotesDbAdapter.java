@@ -32,7 +32,7 @@ public class NotesDbAdapter
 
     private static final String DATABASE_NAME = "data";
     private static final String DATABASE_TABLE = "notes";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 5;
     private static final String DATABASE_CREATE =
             DATABASE_TABLE + " (" + KEY_ROWID + " integer primary key autoincrement, "
             + KEY_NAME + " not null, "
