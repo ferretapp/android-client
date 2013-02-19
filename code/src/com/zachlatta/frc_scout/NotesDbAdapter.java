@@ -8,6 +8,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Notes database access helper class. Defines basic CRUD operations for the notes and gives the ability to list all
  * notes as well as retrieve or modify a specific note.
@@ -28,11 +32,15 @@ public class NotesDbAdapter
 
     private static final String DATABASE_NAME = "data";
     private static final String DATABASE_TABLE = "notes";
-    private static final int DATABASE_VERSION = 2;
-    private static final String DATABASE_CREATE = "create table " + DATABASE_TABLE + " (" + KEY_ROWID
-            + " integer primary key autoincrement, " + KEY_NAME + " not null, " + KEY_NUMBER + " text not null, "
-            + KEY_NOTES + " text not null, " + KEY_GAMEPLAY_SHOOTING + " integer not null, " + KEY_GAMEPLAY_CLIMBING
-            + " integer not null, " + KEY_GAMEPLAY_DEFENSE + " integer not null);";
+    private static final int DATABASE_VERSION = 3;
+    private static final String DATABASE_CREATE =
+            DATABASE_TABLE + " (" + KEY_ROWID + " integer primary key autoincrement, "
+            + KEY_NAME + " not null, "
+            + KEY_NUMBER + " text not null, "
+            + KEY_NOTES + " text not null, "
+            + KEY_GAMEPLAY_SHOOTING + " integer not null, "
+            + KEY_GAMEPLAY_CLIMBING + " integer not null, "
+            + KEY_GAMEPLAY_DEFENSE + " integer not null);";
 
     private final Context mCtx;
 
@@ -46,7 +54,7 @@ public class NotesDbAdapter
         @Override
         public void onCreate(SQLiteDatabase db)
         {
-            db.execSQL(DATABASE_CREATE);
+            db.execSQL("create table " + DATABASE_CREATE);
         }
 
         @Override
@@ -54,8 +62,73 @@ public class NotesDbAdapter
         {
             Log.w(TAG, "Upgrading database from version " + oldVersion + " to " + newVersion + ", which will destroy "
                     + "all old data.") ;
-            db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
-            onCreate(db);
+
+            try
+            {
+                db.execSQL("create table if not exists " + DATABASE_CREATE);
+
+                List<String> columns = GetColumns(db, DATABASE_TABLE);
+                db.execSQL("alter table " + DATABASE_TABLE + " rename to 'temp_" + DATABASE_TABLE + "'");
+                db.execSQL("create table " + DATABASE_CREATE);
+                columns.retainAll(GetColumns(db, DATABASE_TABLE));
+                String cols = join(columns, ",");
+                db.execSQL(String.format("insert into %s (%s) select %s from temp_%s", DATABASE_TABLE, cols, cols,
+                        DATABASE_TABLE));
+                db.execSQL("drop table 'temp_" + DATABASE_TABLE + "'");
+                db.setTransactionSuccessful();
+            }
+            finally
+            {
+                db.endTransaction();
+            }
+        }
+
+        public static List<String> GetColumns(SQLiteDatabase db, String tableName)
+        {
+            List<String> ar = null;
+            Cursor c = null;
+
+            try
+            {
+                c = db.rawQuery("select * from " + tableName + " limit 1", null);
+
+                if(c != null)
+                {
+                    ar = new ArrayList<String>(Arrays.asList(c.getColumnNames()));
+                }
+            }
+            catch(Exception e)
+            {
+                Log.v(tableName, e.getMessage(), e);
+                e.printStackTrace();
+            }
+            finally
+            {
+                if(c != null)
+                {
+                    c.close();
+                }
+            }
+
+            return ar;
+        }
+
+        public static String join(List<String> list, String delim)
+        {
+            StringBuilder buf = new StringBuilder();
+            int num = list.size();
+
+            for(int i = 0; i < num; i++)
+            {
+                if(i != 0)
+                {
+                    buf.append(delim);
+                }
+
+                buf.append((String) list.get(i));
+            }
+
+            return buf.toString();
         }
     }
 
