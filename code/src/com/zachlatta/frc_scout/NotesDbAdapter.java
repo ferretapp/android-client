@@ -38,9 +38,9 @@ public class NotesDbAdapter
             + KEY_NAME + " not null, "
             + KEY_NUMBER + " text not null, "
             + KEY_NOTES + " text not null, "
-            + KEY_GAMEPLAY_SHOOTING + " integer not null, "
-            + KEY_GAMEPLAY_CLIMBING + " integer not null, "
-            + KEY_GAMEPLAY_DEFENSE + " integer not null, "
+            + KEY_GAMEPLAY_SHOOTING + " integer not null default 0, "
+            + KEY_GAMEPLAY_CLIMBING + " integer not null default 0, "
+            + KEY_GAMEPLAY_DEFENSE + " integer not null default 0, "
             + "deletion, "
             + "priority);";
 
